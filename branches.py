@@ -34,7 +34,7 @@ def copy_config():
             'password'    : 'password' }
         connect = ConnectHandler(**DEVICES_PARAMS)
         connect.send_command('enable\n\n')
-        config = connect.send_command('show running-config')
+        config = connect.send_command('more system:running-config')
 
         with open(CITY, 'w') as cfg:
             cfg.writelines(config)

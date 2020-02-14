@@ -1,5 +1,6 @@
 import collections
 from netmiko import ConnectHandler
+import subprocess
 
 DEVICE_IP = {
 'nn' : '1.1.1.1',
@@ -27,17 +28,22 @@ DEVICE_IP = {
 
 def copy_config():
     for CITY, IP in DEVICE_IP.items():
-        DEVICES_PARAMS = { 
-            'device_type' : 'cisco_asa',
-            'ip'          : IP,
-            'username'    : 'admin',
-            'password'    : 'password' }
-        connect = ConnectHandler(**DEVICES_PARAMS)
-        connect.send_command('enable\n\n')
-        config = connect.send_command('more system:running-config')
+        reply = subprocess.run(['ping', '-n', '1', IP])
+        if reply.returncode == 0:
+            DEVICES_PARAMS = { 
+                'device_type' : 'cisco_asa',
+                'ip'          : IP,
+                'username'    : 'username',
+                'password'    : 'password' }
+            connect = ConnectHandler(**DEVICES_PARAMS)
+            connect.send_command('enable\n\n')
+            config = connect.send_command('more system:running-config')
 
-        with open(CITY, 'w') as cfg:
-            cfg.writelines(config)
+            with open(CITY, 'w') as cfg:
+                cfg.writelines(config)
+
+        else:
+            continue
 
 if __name__ == '__main__':
     copy_config()

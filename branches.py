@@ -41,6 +41,8 @@ def copy_config():
 
             with open(CITY, 'w') as cfg:
                 cfg.writelines(config)
+                
+            connect.disconnect()
 
         else:
             continue

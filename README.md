@@ -1,2 +1,2 @@
 - Install the library netmiko
-- Set the parametr "device type" in dependence on your vendor
+- Set the parameter "device type" in dependence on your vendor

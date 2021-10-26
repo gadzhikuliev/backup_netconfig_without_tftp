@@ -34,7 +34,7 @@ def copy_config():
                 'ip'          : IP,
                 'username'    : 'username',
                 'password'    : 'password',
-                'global_delay_factor' : 2}
+                'global_delay_factor' : 2 }
             connect = ConnectHandler(**DEVICES_PARAMS)
             connect.send_command('enable\n\n')
             config = connect.send_command('more system:running-config')

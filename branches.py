@@ -9,7 +9,7 @@ DEVICE_IP = {
 'vladimir' : '5.5.5.5',
 'volgograd' : '6.6.6.6',
 'cheboksary' : '7.7.7.7',
-# 'chelyabinsk' : '8.8.8.8',
+'chelyabinsk' : '8.8.8.8',
 'omsk' : '9.9.9.9',
 'sevastopol' : '10.10.10.10',
 'perm' : '11.11.11.11',
